@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import json
 from selenium.webdriver.chrome.options import Options
+from loadDB import load_data_to_db
 
 def getDepartamentos(url:str):
     br.get(url)
@@ -35,7 +36,7 @@ def save_data_json(file_name: str, data):
 def main():
     data = get_data(url)
     save_data_json('departamentos.json', data)
-
+    load_data_to_db(data)
 
 if __name__ == '__main__':
     url = 'https://www.municipio.com.bo/'
